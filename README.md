@@ -1,39 +1,44 @@
 # UUIDv4
 
-Build library for generating UUID version 4 strings.
+Library for generating UUID (universally unique identifier) version 4 strings.
 
-## Initialize project
+The library will use [window.crypto](https://developer.mozilla.org/en-US/docs/Web/API/Window/crypto) to
+generate random numbers if it detects that it is available, else it will fallback to use
+[Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random).
 
-    npm install
+## Usage
 
-## Build
+```Typescript
+let uuid: string = UUIDv4.generateUUID();
+```
 
-Build the library by running
+Sample Angular Karma test
 
-    ./build.sh
+```Typescript
+import { TestBed, inject } from '@angular/core/testing';
+import { UUIDv4 } from 'uuid-version4';
 
-The output is placed in dist folder.
+describe('sample test', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: []
+    });
+  });
 
-## Publish to npmjs.org
+  it('it should generate UUID version 4 string', inject([], () => {
+    let uuid: string = UUIDv4.generateUUID();
+    expect(uuid).toBeTruthy();
+    expect(uuid.length).toBe(36);
+    expect(uuid[14]).toBe('4');
+  }));
+});
+```
 
-To upload new version to npm registry update version number in src/package.json and run the following
-commands:
+## Main source
 
-    ./build.sh
-    cd dist
-    npm publish ./
-
-or
-
-    ./build.sh
-    npm publish ./dist/
-
-## Check npm tools versions
-
-To check the versions on the tools in package.json run
-
-    ./node_modules/.bin/ncu
+The main source file is [index.ts](https://github.com/pfrandsen/UUIDv4/blob/master/src/index.ts).
 
 ## References
 
-The configuration of the library is based on simple-ui-lib, see [ng-conf presentation](https://www.youtube.com/watch?v=unICbsPGFIA) as a sample for building a library using the [Angular Package Format](https://goo.gl/AMOU5G).
+* Wikipedia: [Universally unique identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier)
+* Specification: [RFC 4122](https://www.ietf.org/rfc/rfc4122.txt)

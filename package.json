@@ -1,21 +1,20 @@
 {
-  "name": "uuid-library-builder",
-  "version": "0.3.0",
-  "description": "Example of bundling Angular libraries",
+  "name": "uuid-version4",
+  "description": "Library for generating UUID (universally unique identifier) version 4 strings",
+  "author": "Peter Frandsen <pfrandsen@gmail.com>",
+  "version": "0.1.2",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/pfrandsen/UUIDv4.git"
   },
-  "author": "Peter Frandsen",
-  "license": "MIT",
-  "devDependencies": {
-    "@angular/core": "4.0.2",
-    "@angular/compiler": "4.0.2",
-    "@angular/compiler-cli": "4.0.2",
-    "npm-check-updates": "2.10.5",
-    "rollup": "0.41.6",
-    "rxjs": "5.3.0",
-    "typescript": "2.2.2",
-    "zone.js": "0.8.5"
-  }
+  "main": "UUIDv4.es5.js",
+  "es2015": "UUIDv4.js",
+  "typings": "UUIDv4.d.ts",
+  "peerDependencies": {
+  },
+  "keywords": [
+      "UUID",
+      "RFC 4122"
+  ]
 }
